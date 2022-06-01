@@ -108,10 +108,10 @@ forever(function () {
 })
 forever(function () {
     if (current_tilemap == "BossBattle") {
-        if (Bobbetita.y < 67) {
+        if (Bobbetita.y < 90) {
             Bobbetita.y += Normal_gravity
         }
-        if (Bobbetita.y > 68) {
+        if (Bobbetita.y > 91) {
             Bobbetita.y += UnderwaterGravity
         }
     }
