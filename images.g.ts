@@ -220,25 +220,6 @@ f f f f f f f f f f f f f f f
 . . 5 . . . . . . . . . 5 5 . . 
 . . . . . . . . . . . . . 5 . . 
 `;
-            case "image6":
-            case "Apple":return img`
-e e e e e e e c 7 e e e e e e e 
-e e e e e e c 7 7 e e e e e e e 
-e e c e e e c 7 e 2 2 e e e e e 
-e c e e 2 2 c 6 e e 2 2 2 2 e e 
-e c e 2 2 e c c 2 4 5 4 2 2 e e 
-c e 2 2 2 2 2 2 2 4 5 5 2 2 2 e 
-c e 2 2 2 2 2 2 2 2 4 4 2 2 2 e 
-c e 2 2 2 2 2 2 2 2 2 2 2 2 2 e 
-c e 2 2 2 2 2 2 2 2 2 2 2 2 2 e 
-c e 2 2 2 2 2 2 2 2 2 2 2 4 2 e 
-c e 2 2 2 2 2 2 2 2 2 2 2 4 2 e 
-c e 2 2 2 2 2 2 2 2 2 2 2 4 2 e 
-e e e 2 2 2 2 2 2 2 2 2 4 2 e e 
-e 2 e e 2 2 2 2 2 2 4 4 2 e e e 
-e e 2 2 e e 4 4 4 4 2 e e e e e 
-e e e e 2 2 e e e e e e e e e e 
-`;
             case "image4":
             case "Alligators":return img`
 . . . . . . . . . . . . . . . . 
@@ -295,6 +276,25 @@ e e e e e e e e e e e e e e e .
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
+`;
+            case "image6":
+            case "Apple":return img`
+. . . . . . . c 7 . . . . . . . 
+. . . . . e c 7 7 e e . . . . . 
+. . c e e e c 7 e 2 2 e e . . . 
+. c e e 2 2 c 6 e e 2 2 2 . . . 
+. c e 2 2 e c c 2 4 5 4 2 e . . 
+c e 2 2 2 2 2 2 2 4 5 5 2 2 e . 
+c e 2 2 2 2 2 2 2 2 4 4 2 2 2 . 
+c e 2 2 2 2 2 2 2 2 2 2 2 2 2 . 
+c e 2 2 2 2 2 2 2 2 2 2 2 2 2 . 
+c e 2 2 2 2 2 2 2 2 2 2 2 4 2 . 
+c e 2 2 2 2 2 2 2 2 2 2 2 4 e . 
+c e 2 2 2 2 2 2 2 2 2 2 2 4 e . 
+e e e 2 2 2 2 2 2 2 2 2 4 2 . . 
+. 2 e e 2 2 2 2 2 2 4 4 2 e . . 
+. . 2 2 e e 4 4 4 4 2 e e . . . 
+. . . . 2 2 e e e e e e . . . . 
 `;
         }
         return null;

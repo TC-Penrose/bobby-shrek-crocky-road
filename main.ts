@@ -6,11 +6,20 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile13`, function (sprite, 
     sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
     tiles.setCurrentTilemap(tilemap`BossBattle`)
     current_tilemap = "BossBattle"
-    tiles.placeOnTile(Bobbetita, tiles.getTileLocation(0, 0))
+    tiles.placeOnTile(Bobbetita, tiles.getTileLocation(18, 1))
+    Apple.setPosition(316, 75)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
-    Life += randint(1, 5)
-    Apple.setPosition(randint(0, 1000), randint(0, 35))
+    if (current_tilemap == "Swamp tile-map") {
+        Life += randint(1, 5)
+        Apple.setPosition(randint(0, 1000), randint(0, 35))
+    } else if (current_tilemap == "BossBattle") {
+        Life += randint(1, 5)
+        Apple = sprites.create(assets.image`Abyss`, SpriteKind.Food)
+        pause(5000)
+        Apple = sprites.create(assets.image`Apple`, SpriteKind.Food)
+        Apple.setPosition(316, 75)
+    }
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy()

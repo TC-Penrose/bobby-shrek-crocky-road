@@ -29,11 +29,6 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Bobby Big-Ear0"
     },
-    "image6": {
-        "data": "hwQQABAAAADu7s7MzMzu7u7O7O7u7i7u7uwuIiIi7uLu7iIiIiLi4u4uIiIiIiIu7i4uIiIiIi7OzCwiIiIi5HxnLCIiIiLkd+4iIiIiIuTu4kQiIiIi5O4iVSQiIkLi7i5UJCIiQu7uLiIiIiIk7u4uIiJCROLu7u4uIiIi7u7u7u7u7u7u7g==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "Apple"
-    },
     "image4": {
         "data": "hwQQABAAAAAAAAAAzMwAAAAAAMB8xwAAAAAAwHfMAAAAAADAxwwAAAAAAMzHAAAAAADAfMcMAAAAAMB3dwwAAAAAwHfHDAAAAADAd8cAAAAAAMB3xwwAAAAAwHd3DAAAAADAfMcMAAAAAAD8xwAAAAAAAMzHAAAAAAAAwMcAAAAAAADAzAAAAA==",
         "mimeType": "image/x-mkcd-f4",
@@ -48,6 +43,11 @@
         "data": "hwQQABAAAAAAAADgAAAAAAAAAO4OAAAAAADg7u4AAAAAAO7g4A4AAADgDuAADgAAAOAO4ADuAAAAAADgAAAAAAAAAOAAAAAAAAAA4AAAAAAAAADgAAAAAAAAAOAAAAAAAAAA5AQAAAAAAEDgQAAAAAAABOICBAAAAAAg4CAAAAAAAAIAAAIAAA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Arrow_Left"
+    },
+    "image6": {
+        "data": "hwQQABAAAAAAAMDMzMwOAADA7O7u7i4AAOwuIiIi7gIA7iIiIiLiAgAuIiIiIiIu4C4uIiIiIi7AzCwiIiIi5HxnLCIiIiLkd+4iIiIiIuTg4kQiIiIi5OAiVSQiIkLiAC5UJCIiQu4ALiIiIiIkDgAALiJCROIAAADgIiLuAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Apple"
     },
     "*": {
         "mimeType": "image/x-mkcd-f4",
