@@ -11,10 +11,10 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile13`, function (sprite, 
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     if (current_tilemap == "Swamp tile-map") {
-        Life += randint(1, 5)
+        Lifescore += randint(1, 5)
         Apple.setPosition(randint(0, 1000), randint(0, 35))
     } else if (current_tilemap == "BossBattle") {
-        Life += randint(1, 5)
+        Lifescore += randint(1, 5)
         Apple = sprites.create(assets.image`Abyss`, SpriteKind.Food)
         pause(5000)
         Apple = sprites.create(assets.image`Apple`, SpriteKind.Food)
@@ -26,7 +26,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     scene.cameraShake(4, 500)
-    Life += -1
+    Lifescore += -1
 })
 let Apple: Sprite = null
 let Bobbetita: Sprite = null
@@ -44,11 +44,12 @@ scene.cameraFollowSprite(Bobbetita)
 tiles.placeOnTile(Bobbetita, tiles.getTileLocation(7, 7))
 Bobbetita.setScale(2, ScaleAnchor.Middle)
 Bobbetita.sayText("GET OUT OF MY SWAMP.", 2000, true)
-let Life = 5
-let textSprite = textsprite.create(convertToText(Life))
+let Lifescore = 5
+let textSprite = textsprite.create(convertToText(Lifescore))
 textSprite.setScale(1.5, ScaleAnchor.Middle)
 pause(2000)
-let Gravity = 0.5
+let UnderwaterGravity = 0.5
+let Normal_gravity = 1
 Bobbetita.setScale(1, ScaleAnchor.Middle)
 Apple = sprites.create(assets.image`Apple`, SpriteKind.Food)
 Apple.setScale(0.8, ScaleAnchor.Middle)
@@ -56,13 +57,13 @@ Apple.setPosition(24, 40)
 let Arrow = sprites.create(assets.image`Abyss`, SpriteKind.Projectile)
 let Gator = sprites.create(assets.image`Abyss`, SpriteKind.Enemy)
 forever(function () {
-    if (controller.right.isPressed()) {
-        Bobbetita.x += 1
+    if (controller.down.isPressed()) {
+        Bobbetita.y += 1
     }
 })
 forever(function () {
-    if (controller.up.isPressed()) {
-        Bobbetita.y += -1.5
+    if (controller.right.isPressed()) {
+        Bobbetita.x += 1
     }
 })
 forever(function () {
@@ -71,13 +72,20 @@ forever(function () {
     }
 })
 forever(function () {
-    if (controller.left.isPressed()) {
-        Bobbetita.x += -1
+    if (controller.up.isPressed()) {
+        if (Bobbetita.y > 78) {
+            Bobbetita.y += -1.4
+        }
+        if (Bobbetita.y <= 78) {
+            Normal_gravity = -1
+            pause(200)
+            Normal_gravity = 1
+        }
     }
 })
 forever(function () {
-    if (controller.down.isPressed()) {
-        Bobbetita.y += 1
+    if (controller.left.isPressed()) {
+        Bobbetita.x += -1
     }
 })
 forever(function () {
@@ -86,10 +94,17 @@ forever(function () {
     }
 })
 forever(function () {
-    Bobbetita.y += Gravity
+    if (current_tilemap == "Swamp tile-map") {
+        if (Bobbetita.y <= 78) {
+            Bobbetita.y += Normal_gravity
+        }
+        if (Bobbetita.y > 78) {
+            Bobbetita.y += UnderwaterGravity
+        }
+    }
 })
 forever(function () {
-    textSprite.setText(convertToText(Life))
+    textSprite.setText(convertToText(Lifescore))
 })
 forever(function () {
     textSprite.setPosition(scene.cameraProperty(CameraProperty.Left) + 15, scene.cameraProperty(CameraProperty.Top) + 15)
