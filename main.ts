@@ -21,6 +21,14 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
         tiles.placeOnTile(Apple, tiles.getTileLocation(19, 4))
     }
 })
+function SpawnGator (xSpawn: number, ySpawn: number, Interval: number) {
+    pause(Interval)
+    Gator = sprites.create(assets.image`Alligators`, SpriteKind.Enemy)
+    Gator.setScale(randint(1, 2), ScaleAnchor.Middle)
+    Gator.setPosition(xSpawn, ySpawn)
+    Gator.setVelocity(randint(15, 25), 0)
+    Gator.setFlag(SpriteFlag.GhostThroughWalls, true)
+}
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy()
 })
@@ -28,6 +36,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     scene.cameraShake(4, 500)
     Lifescore += -1
 })
+let Gator: Sprite = null
 let Apple: Sprite = null
 let Bobbetita: Sprite = null
 let current_tilemap = ""
@@ -55,7 +64,7 @@ Apple = sprites.create(assets.image`Apple`, SpriteKind.Food)
 Apple.setScale(0.8, ScaleAnchor.Middle)
 Apple.setPosition(24, 40)
 let Arrow = sprites.create(assets.image`Abyss`, SpriteKind.Projectile)
-let Gator = sprites.create(assets.image`Abyss`, SpriteKind.Enemy)
+Gator = sprites.create(assets.image`Abyss`, SpriteKind.Enemy)
 forever(function () {
     if (current_tilemap == "Swamp tile-map") {
         if (Bobbetita.y < 75) {
@@ -124,11 +133,6 @@ forever(function () {
 })
 forever(function () {
     while (current_tilemap == "Swamp tile-map") {
-        pause(1000)
-        Gator = sprites.create(assets.image`Alligators`, SpriteKind.Enemy)
-        Gator.setScale(randint(1, 2), ScaleAnchor.Middle)
-        Gator.setPosition(0, randint(80, 300))
-        Gator.setVelocity(randint(15, 25), 0)
-        Gator.setFlag(SpriteFlag.GhostThroughWalls, true)
+        SpawnGator(0, randint(80, 300), 1000)
     }
 })
