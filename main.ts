@@ -77,8 +77,8 @@ forever(function () {
             Bobbetita.y += -1.4
         }
         if (Bobbetita.y <= 78) {
-            Bobbetita.y += Normal_gravity
             Normal_gravity = -1
+            Bobbetita.y += Normal_gravity
             pause(1000)
             Normal_gravity = 1
         }
@@ -106,12 +106,8 @@ forever(function () {
 })
 forever(function () {
     if (current_tilemap == "Swamp tile-map") {
-        if (Bobbetita.y < 77) {
+        if (Bobbetita.y < 78) {
             Bobbetita.y += Normal_gravity
-        }
-        if ((Bobbetita.y == 77 || Bobbetita.y == 78) && !(controller.up.isPressed())) {
-            Bobbetita.y += Normal_gravity
-            Normal_gravity = 0
         }
         if (Bobbetita.y > 78) {
             Bobbetita.y += UnderwaterGravity
