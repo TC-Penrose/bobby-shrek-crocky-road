@@ -57,8 +57,18 @@ Apple.setPosition(24, 40)
 let Arrow = sprites.create(assets.image`Abyss`, SpriteKind.Projectile)
 let Gator = sprites.create(assets.image`Abyss`, SpriteKind.Enemy)
 forever(function () {
-    if (controller.down.isPressed()) {
-        Bobbetita.y += 1
+    if (current_tilemap == "Swamp tile-map") {
+        if (Bobbetita.y < 75) {
+            Bobbetita.y += Normal_gravity
+        } else if ((Bobbetita.y == 75 || Bobbetita.y == 76) && !(controller.up.isPressed())) {
+            Bobbetita.y += Normal_gravity
+            Normal_gravity = 0
+        } else if (Bobbetita.y > 76) {
+            Bobbetita.y += UnderwaterGravity
+        } else {
+            Normal_gravity = 1
+            UnderwaterGravity = 0.5
+        }
     }
 })
 forever(function () {
@@ -72,13 +82,8 @@ forever(function () {
     }
 })
 forever(function () {
-    if (controller.up.isPressed()) {
-        if (Bobbetita.y >= 78) {
-            Bobbetita.y += -1.4
-        }
-        if (Bobbetita.y < 78) {
-            Bobbetita.y += -2
-        }
+    if (controller.down.isPressed()) {
+        Bobbetita.y += 1
     }
 })
 forever(function () {
@@ -92,25 +97,21 @@ forever(function () {
     }
 })
 forever(function () {
-    if (current_tilemap == "BossBattle") {
-        if (Bobbetita.y < 72) {
-            Bobbetita.y += Normal_gravity
+    if (controller.up.isPressed()) {
+        if (Bobbetita.y >= 76) {
+            Bobbetita.y += -1.4
         }
-        if (Bobbetita.y > 78) {
-            Bobbetita.y += UnderwaterGravity
+        if (Bobbetita.y < 76) {
+            Bobbetita.y += -2
         }
     }
 })
 forever(function () {
-    if (current_tilemap == "Swamp tile-map") {
-        if (Bobbetita.y < 77) {
+    if (current_tilemap == "BossBattle") {
+        if (Bobbetita.y < 67) {
             Bobbetita.y += Normal_gravity
         }
-        if ((Bobbetita.y == 77 || Bobbetita.y == 78) && !(controller.up.isPressed())) {
-            Bobbetita.y += Normal_gravity
-            Normal_gravity = 0
-        }
-        if (Bobbetita.y > 78) {
+        if (Bobbetita.y > 68) {
             Bobbetita.y += UnderwaterGravity
         }
     }
