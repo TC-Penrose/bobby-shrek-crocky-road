@@ -7,7 +7,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile13`, function (sprite, 
     tiles.setCurrentTilemap(tilemap`BossBattle`)
     current_tilemap = "BossBattle"
     tiles.placeOnTile(Bobbetita, tiles.getTileLocation(18, 1))
-    Apple.setPosition(316, 75)
+    tiles.placeOnTile(Apple, tiles.getTileLocation(19, 4))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     if (current_tilemap == "Swamp tile-map") {
@@ -18,7 +18,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
         Apple = sprites.create(assets.image`Abyss`, SpriteKind.Food)
         pause(5000)
         Apple = sprites.create(assets.image`Apple`, SpriteKind.Food)
-        Apple.setPosition(316, 75)
+        tiles.placeOnTile(Apple, tiles.getTileLocation(19, 4))
     }
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
@@ -53,24 +53,7 @@ Bobbetita.setScale(1, ScaleAnchor.Middle)
 Apple = sprites.create(assets.image`Apple`, SpriteKind.Food)
 Apple.setScale(0.8, ScaleAnchor.Middle)
 Apple.setPosition(24, 40)
-let Arrow = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Projectile)
+let Arrow = sprites.create(assets.image`Abyss`, SpriteKind.Projectile)
 let Gator = sprites.create(assets.image`Abyss`, SpriteKind.Enemy)
 forever(function () {
     if (controller.right.isPressed()) {
