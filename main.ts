@@ -21,13 +21,22 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
         tiles.placeOnTile(Apple, tiles.getTileLocation(19, 4))
     }
 })
-function SpawnGator (xSpawn: number, ySpawn: number, Interval: number) {
-    pause(Interval)
-    Gator = sprites.create(assets.image`Alligators`, SpriteKind.Enemy)
-    Gator.setScale(randint(1, 2), ScaleAnchor.Middle)
-    Gator.setPosition(xSpawn, ySpawn)
-    Gator.setVelocity(randint(15, 25), 0)
-    Gator.setFlag(SpriteFlag.GhostThroughWalls, true)
+function SpawnGator (xSpawn: number, ySpawn: number, Interval: number, level: string) {
+    if (level == "1") {
+        pause(Interval)
+        Gator = sprites.create(assets.image`Alligators`, SpriteKind.Enemy)
+        Gator.setScale(randint(1, 2), ScaleAnchor.Middle)
+        Gator.setPosition(xSpawn, ySpawn)
+        Gator.setVelocity(randint(15, 25), 0)
+        Gator.setFlag(SpriteFlag.GhostThroughWalls, true)
+    }
+    if (level == "2") {
+        Gator = sprites.create(assets.image`Alligators`, SpriteKind.Enemy)
+        Gator.setScale(4, ScaleAnchor.Middle)
+        Gator.setPosition(xSpawn, ySpawn)
+        Gator.setFlag(SpriteFlag.GhostThroughWalls, false)
+        Gator.setVelocity(20, 0)
+    }
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy()
@@ -133,13 +142,11 @@ forever(function () {
 })
 forever(function () {
     if (current_tilemap == "BossBattle") {
-        SpawnGator(0, 5, 0)
+        SpawnGator(20, 40, 5000, "2")
     }
 })
 forever(function () {
-    if (current_tilemap == "Swamp tile-map") {
-        SpawnGator(0, randint(80, 300), 1000)
-    }
+    SpawnGator(0, randint(80, 300), 1000, "1")
 })
 forever(function () {
     if (current_tilemap == "BossBattle") {
