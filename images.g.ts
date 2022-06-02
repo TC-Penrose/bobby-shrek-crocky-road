@@ -298,7 +298,9 @@ e e e e e e e e e e e e e e e .
 `;
             case "image10":
             case "Onion":return img`
-. . . . . . . e e . . . . . . . 
+. . . . e e . e . . e . . . . . 
+. . . . . . e e . e . . . . . . 
+. . . . . e . e e e . . . . . . 
 . . . . . . . e e . . . . . . . 
 . . . . . c c c c c c . . . . . 
 . . . . c c d b b d c c . . . . 
@@ -306,14 +308,12 @@ e e e e e e e e e e e e e e e .
 . . . c c d d b d b d c c . . . 
 . . c c d d d b d b d d c c . . 
 . c c d b d b b d d b d d c c . 
-c c d b b d b d d d b b d d c c 
 c c d b d d d b d d d b d d d c 
 c c d b b d d d b d d d b d c c 
 . c d d b d d b d d d b d d c c 
 . c c d b b d b d d d b d c c . 
 . . c c d b d b d d b d c c . . 
 . . . c c b d b d b b c c . . . 
-. . . . . c c c c c c . . . . . 
 `;
         }
         return null;

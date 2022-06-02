@@ -8,6 +8,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile13`, function (sprite, 
     current_tilemap = "BossBattle"
     tiles.placeOnTile(Bobbetita, tiles.getTileLocation(18, 1))
     tiles.placeOnTile(Onion, tiles.getTileLocation(17, 2))
+    Lvl2_arrowCounter = []
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     if (current_tilemap == "Swamp tile-map") {
@@ -15,10 +16,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSpr
         Onion.setPosition(randint(0, 1000), randint(0, 35))
     } else if (current_tilemap == "BossBattle") {
         Lifescore += randint(1, 5)
-        Onion = sprites.create(assets.image`Abyss`, SpriteKind.Food)
+        Onion.destroy()
         pause(5000)
         Onion = sprites.create(assets.image`Onion`, SpriteKind.Food)
-        Onion.setScale(0.8, ScaleAnchor.Middle)
+        Onion.setScale(1, ScaleAnchor.Middle)
         tiles.placeOnTile(Onion, tiles.getTileLocation(17, 2))
     }
 })
@@ -39,12 +40,18 @@ function SpawnGator (xSpawn: number, ySpawn: number, Interval: number, level: st
     }
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    otherSprite.destroy()
+    if (current_tilemap == "Swamp tile-map") {
+        otherSprite.destroy()
+    }
+    if (current_tilemap == "BossBattle") {
+        Lvl2_arrowCounter.push("Boss hit!")
+    }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     scene.cameraShake(4, 500)
     Lifescore += -1
 })
+let Lvl2_arrowCounter: string[] = []
 let Gator: Sprite = null
 let Onion: Sprite = null
 let Bobbetita: Sprite = null
@@ -70,7 +77,7 @@ let UnderwaterGravity = 0.5
 let Normal_gravity = 1
 Bobbetita.setScale(1, ScaleAnchor.Middle)
 Onion = sprites.create(assets.image`Onion`, SpriteKind.Food)
-Onion.setScale(0.8, ScaleAnchor.Middle)
+Onion.setScale(1, ScaleAnchor.Middle)
 Onion.setPosition(24, 40)
 let Arrow = sprites.create(assets.image`Abyss`, SpriteKind.Projectile)
 Gator = sprites.create(assets.image`Abyss`, SpriteKind.Enemy)
@@ -159,6 +166,11 @@ forever(function () {
         if (Bobbetita.y > 91) {
             Bobbetita.y += UnderwaterGravity
         }
+    }
+})
+forever(function () {
+    if (Lvl2_arrowCounter.length == 5) {
+        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
     }
 })
 forever(function () {
