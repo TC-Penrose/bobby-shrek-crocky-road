@@ -142,31 +142,15 @@ forever(function () {
     }
 })
 forever(function () {
-    while (current_tilemap == "BossBattle") {
-        for (let index = 0; index < 4; index++) {
-            music.playMelody("E F G E F G E F ", 500)
-        }
-        for (let index = 0; index < 4; index++) {
-            music.playMelody("E F A E F A E D ", 500)
-        }
-        for (let index = 0; index < 2; index++) {
-            music.playMelody("G E F E F E D E ", 500)
-        }
-        music.playMelody("D G D C D E F G ", 500)
-        music.playMelody("A G D E F E D E ", 500)
-    }
     while (current_tilemap == "Swamp tile-map") {
         for (let index = 0; index < 4; index++) {
-            music.playMelody("C5 G A B C5 G A B ", 150)
+            music.playMelody("C - G E E E D C ", 150)
+            music.playMelody("C F E E D D C C ", 150)
+            music.playMelody("C G E E E D C C ", 150)
+            music.playMelody("D E C C C C C C ", 150)
         }
-        music.playMelody("D E F G A G A B ", 150)
     }
 })
 forever(function () {
-    while (current_tilemap == "Swamp tile-map") {
-        for (let index = 0; index < 4; index++) {
-            music.playMelody("C C C C C C C C ", 150)
-        }
-        music.playMelody("C5 B A G F E D C ", 150)
-    }
+	
 })
