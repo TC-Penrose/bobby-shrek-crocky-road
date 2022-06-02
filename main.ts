@@ -92,11 +92,21 @@ forever(function () {
 })
 forever(function () {
     if (controller.up.isPressed()) {
-        if (Bobbetita.y >= 76) {
-            Bobbetita.y += -1.4
+        if (current_tilemap == "Swamp tile-map") {
+            if (Bobbetita.y >= 76) {
+                Bobbetita.y += -1.4
+            }
+            if (Bobbetita.y < 76) {
+                Bobbetita.y += -2
+            }
         }
-        if (Bobbetita.y < 76) {
-            Bobbetita.y += -2
+        if (current_tilemap == "BossBattle") {
+            if (Bobbetita.y >= 91) {
+                Bobbetita.y += -1.4
+            }
+            if (Bobbetita.y < 91) {
+                Bobbetita.y += -2
+            }
         }
     }
 })
@@ -122,12 +132,12 @@ forever(function () {
     }
 })
 forever(function () {
-    while (current_tilemap == "BossBattle") {
-        SpawnGator(0, 1, 1000)
+    if (current_tilemap == "BossBattle") {
+        SpawnGator(0, 5, 0)
     }
 })
 forever(function () {
-    while (current_tilemap == "Swamp tile-map") {
+    if (current_tilemap == "Swamp tile-map") {
         SpawnGator(0, randint(80, 300), 1000)
     }
 })
@@ -142,14 +152,10 @@ forever(function () {
     }
 })
 forever(function () {
-    while (current_tilemap == "Swamp tile-map") {
-        for (let index = 0; index < 4; index++) {
-            music.playMelody("C - G E E E D C ", 150)
-            music.playMelody("C F E E D D C C ", 150)
-            music.playMelody("C G E E E D C C ", 150)
-            music.playMelody("D E C C C C C C ", 150)
-        }
-    }
+	
+})
+forever(function () {
+	
 })
 forever(function () {
 	
