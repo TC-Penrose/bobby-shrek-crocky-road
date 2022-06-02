@@ -66,21 +66,6 @@ Apple.setPosition(24, 40)
 let Arrow = sprites.create(assets.image`Abyss`, SpriteKind.Projectile)
 Gator = sprites.create(assets.image`Abyss`, SpriteKind.Enemy)
 forever(function () {
-    if (current_tilemap == "Swamp tile-map") {
-        if (Bobbetita.y < 75) {
-            Bobbetita.y += Normal_gravity
-        } else if ((Bobbetita.y == 75 || Bobbetita.y == 76) && !(controller.up.isPressed())) {
-            Bobbetita.y += Normal_gravity
-            Normal_gravity = 0
-        } else if (Bobbetita.y > 76) {
-            Bobbetita.y += UnderwaterGravity
-        } else {
-            Normal_gravity = 1
-            UnderwaterGravity = 0.5
-        }
-    }
-})
-forever(function () {
     if (controller.right.isPressed()) {
         Bobbetita.x += 1
     }
@@ -116,6 +101,32 @@ forever(function () {
     }
 })
 forever(function () {
+    textSprite.setText(convertToText(Lifescore))
+})
+forever(function () {
+    textSprite.setPosition(scene.cameraProperty(CameraProperty.Left) + 15, scene.cameraProperty(CameraProperty.Top) + 15)
+})
+forever(function () {
+    if (current_tilemap == "Swamp tile-map") {
+        if (Bobbetita.y < 75) {
+            Bobbetita.y += Normal_gravity
+        } else if ((Bobbetita.y == 75 || Bobbetita.y == 76) && !(controller.up.isPressed())) {
+            Bobbetita.y += Normal_gravity
+            Normal_gravity = 0
+        } else if (Bobbetita.y > 76) {
+            Bobbetita.y += UnderwaterGravity
+        } else {
+            Normal_gravity = 1
+            UnderwaterGravity = 0.5
+        }
+    }
+})
+forever(function () {
+    while (current_tilemap == "Swamp tile-map") {
+        SpawnGator(0, randint(80, 300), 1000)
+    }
+})
+forever(function () {
     if (current_tilemap == "BossBattle") {
         if (Bobbetita.y < 90) {
             Bobbetita.y += Normal_gravity
@@ -126,13 +137,23 @@ forever(function () {
     }
 })
 forever(function () {
-    textSprite.setText(convertToText(Lifescore))
-})
-forever(function () {
-    textSprite.setPosition(scene.cameraProperty(CameraProperty.Left) + 15, scene.cameraProperty(CameraProperty.Top) + 15)
-})
-forever(function () {
+    while (current_tilemap == "BossBattle") {
+        for (let index = 0; index < 4; index++) {
+            music.playMelody("E F G E F G E F ", 500)
+        }
+        for (let index = 0; index < 4; index++) {
+            music.playMelody("E F A E F A E D ", 500)
+        }
+        for (let index = 0; index < 2; index++) {
+            music.playMelody("G E F E F E D E ", 500)
+        }
+        music.playMelody("D G D C D E F G ", 500)
+        music.playMelody("A G D E F E D E ", 500)
+    }
     while (current_tilemap == "Swamp tile-map") {
-        SpawnGator(0, randint(80, 300), 1000)
+        for (let index = 0; index < 4; index++) {
+            music.playMelody("C5 G A B C5 G A B ", 150)
+        }
+        music.playMelody("D E F G A G A B ", 150)
     }
 })
