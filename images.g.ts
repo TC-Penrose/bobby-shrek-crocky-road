@@ -278,23 +278,42 @@ e e e e e e e e e e e e e e e .
 . . . . . . . . . . . . . . . . 
 `;
             case "image6":
-            case "Apple":return img`
-. . . . . . . c 7 . . . . . . . 
-. . . . . e c 7 7 e e . . . . . 
-. . c e e e c 7 e 2 2 e e . . . 
-. c e e 2 2 c 6 e e 2 2 2 . . . 
-. c e 2 2 e c c 2 4 5 4 2 e . . 
-c e 2 2 2 2 2 2 2 4 5 5 2 2 e . 
-c e 2 2 2 2 2 2 2 2 4 4 2 2 2 . 
-c e 2 2 2 2 2 2 2 2 2 2 2 2 2 . 
-c e 2 2 2 2 2 2 2 2 2 2 2 2 2 . 
-c e 2 2 2 2 2 2 2 2 2 2 2 4 2 . 
-c e 2 2 2 2 2 2 2 2 2 2 2 4 e . 
-c e 2 2 2 2 2 2 2 2 2 2 2 4 e . 
-e e e 2 2 2 2 2 2 2 2 2 4 2 . . 
-. 2 e e 2 2 2 2 2 2 4 4 2 e . . 
-. . 2 2 e e 4 4 4 4 2 e e . . . 
-. . . . 2 2 e e e e e e . . . . 
+            case "lemon":return img`
+. . . . . . . . . . . . . . . . 
+. . . . . f f f f f f f . . . . 
+. . . f f f 5 5 5 5 5 5 f f . . 
+. . f f 5 5 5 5 5 5 5 5 5 5 f . 
+. f f 5 5 5 5 5 5 5 5 5 5 5 f . 
+. f f 5 5 5 5 5 5 5 5 5 5 5 f . 
+. f f 5 5 5 5 5 5 5 5 5 5 5 5 f 
+. f 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
+. f 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
+. f 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
+. f 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
+. f 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
+. f f 5 5 5 5 5 5 5 5 5 5 5 f f 
+. f f f f 5 5 5 5 5 5 5 5 f . . 
+. . 5 f f f f 5 5 5 5 5 f f . . 
+. . . 5 f f f f f f f f f . . . 
+`;
+            case "image10":
+            case "Onion":return img`
+. . . . . . . e e . . . . . . . 
+. . . . . . . e e . . . . . . . 
+. . . . . c c c c c c . . . . . 
+. . . . c c d b b d c c . . . . 
+. . . c c d d b d d d c c . . . 
+. . . c c d d b d b d c c . . . 
+. . c c d d d b d b d d c c . . 
+. c c d b d b b d d b d d c c . 
+c c d b b d b d d d b b d d c c 
+c c d b d d d b d d d b d d d c 
+c c d b b d d d b d d d b d c c 
+. c d d b d d b d d d b d d c c 
+. c c d b b d b d d d b d c c . 
+. . c c d b d b d d b d c c . . 
+. . . c c b d b d b b c c . . . 
+. . . . . c c c c c c . . . . . 
 `;
         }
         return null;

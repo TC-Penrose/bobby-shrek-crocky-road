@@ -45,9 +45,14 @@
         "displayName": "Arrow_Left"
     },
     "image6": {
-        "data": "hwQQABAAAAAAAMDMzMwOAADA7O7u7i4AAOwuIiIi7gIA7iIiIiLiAgAuIiIiIiIu4C4uIiIiIi7AzCwiIiIi5HxnLCIiIiLkd+4iIiIiIuTg4kQiIiIi5OAiVSQiIkLiAC5UJCIiQu4ALiIiIiIkDgAALiJCROIAAADgIiLuAAAAAAAAAAAAAA==",
+        "data": "hwQQABAAAAAAAAAAAAAAAAAA//////8AAPD/X1VV/wUA/1VVVVX1XwBfVVVVVfX/8F9VVVVVVf/wVVVVVVVV//BVVVVVVVX18FVVVVVVVfXwVVVVVVVV9fBVVVVVVVX18FVVVVVVVfUAX1VVVVVV/wBfVVVVVfUPAPD/VVVVDwAAAAD///8PAA==",
         "mimeType": "image/x-mkcd-f4",
-        "displayName": "Apple"
+        "displayName": "lemon"
+    },
+    "image10": {
+        "data": "hwQQABAAAAAAAAAAzAwAAAAAAMDMzAwAAAAAzN3dzAAAAMzcu9vNDADAzL3bu9sMAMzd3d3du8sA3N29293dze68u7u9vbvL7rzd3d3b3c0A3L3b3d3dywDM3b3b3b3LAMDM3bu92wwAAMzc3dvNDAAAAMzd3cwAAAAAwNzMDAAAAAAAzMwAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Onion"
     },
     "*": {
         "mimeType": "image/x-mkcd-f4",
