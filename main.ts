@@ -35,6 +35,7 @@ function SpawnGator (xSpawn: number, ySpawn: number, Interval: number, level: st
         Gator.setScale(4, ScaleAnchor.Middle)
         Gator.setPosition(xSpawn, ySpawn)
         Gator.setFlag(SpriteFlag.GhostThroughWalls, false)
+        Gator.setBounceOnWall(true)
         Gator.setVelocity(20, 0)
     }
 }
@@ -126,6 +127,12 @@ forever(function () {
     textSprite.setPosition(scene.cameraProperty(CameraProperty.Left) + 15, scene.cameraProperty(CameraProperty.Top) + 15)
 })
 forever(function () {
+    if (current_tilemap == "BossBattle") {
+        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+        SpawnGator(60, 80, 0, "2")
+    }
+})
+forever(function () {
     if (current_tilemap == "Swamp tile-map") {
         if (Bobbetita.y < 75) {
             Bobbetita.y += Normal_gravity
@@ -141,12 +148,9 @@ forever(function () {
     }
 })
 forever(function () {
-    if (current_tilemap == "BossBattle") {
-        SpawnGator(20, 40, 5000, "2")
+    if (current_tilemap == "Swamp tile-map") {
+        SpawnGator(0, randint(80, 300), 1000, "1")
     }
-})
-forever(function () {
-    SpawnGator(0, randint(80, 300), 1000, "1")
 })
 forever(function () {
     if (current_tilemap == "BossBattle") {
