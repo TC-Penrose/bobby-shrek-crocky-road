@@ -122,6 +122,11 @@ forever(function () {
     }
 })
 forever(function () {
+    while (current_tilemap == "BossBattle") {
+        SpawnGator(0, 1, 1000)
+    }
+})
+forever(function () {
     while (current_tilemap == "Swamp tile-map") {
         SpawnGator(0, randint(80, 300), 1000)
     }
@@ -155,5 +160,13 @@ forever(function () {
             music.playMelody("C5 G A B C5 G A B ", 150)
         }
         music.playMelody("D E F G A G A B ", 150)
+    }
+})
+forever(function () {
+    while (current_tilemap == "Swamp tile-map") {
+        for (let index = 0; index < 4; index++) {
+            music.playMelody("C C C C C C C C ", 150)
+        }
+        music.playMelody("C5 B A G F E D C ", 150)
     }
 })
