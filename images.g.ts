@@ -3,25 +3,6 @@ namespace myImages {
 
     helpers._registerFactory("image", function(name: string) {
         switch(helpers.stringTrim(name)) {
-            case "image5":
-            case "Swamp Door":return img`
-e e e e e e e e e e e e e . . . 
-e e e e e e e e e e e e e . . . 
-e e e d d d d d d e e e e . . . 
-e e e d d d d d d e e e e . . . 
-e e e d d d d d d e e e e . . . 
-e e e d d d d d d e e e e . . . 
-e e e d d d d d d e e e e . . . 
-e e e d d d d d d e e e e . . . 
-e e e e e e e e e e f f e . . . 
-e e e e e e e e e e e e e . . . 
-e e e e e e e e e e e e e . . . 
-e e e e e e e e e e e e e . . . 
-e e e e e e e e e e e e e . . . 
-e e e e e e e e e e e e e . . . 
-e e e e e e e e e e e e e . . . 
-e e e e e e e e e e e e e . . . 
-`;
             case "image2":
             case "Swamp":return img`
 eeeeeeeeeeeeeeeecccceeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeccccccccccceeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
@@ -182,25 +163,6 @@ f f f f f f f f f f f f f f f
 f f f f f f f f f f f f f f f 
 f f f f f f f f f f f f f f f 
 `;
-            case "image8":
-            case "Bobby Big-Ear":return img`
-. . . . . . . . . . . . . . . . 
-. . . . . . d d d d d . . . . . 
-. . . . d d d d d d d d d . . . 
-. . . d d 7 7 7 d d d d d . . . 
-. . . d 7 7 7 7 7 d d d d d . . 
-7 7 7 7 1 1 1 7 1 d d d 7 7 7 7 
-7 7 7 7 1 f 1 7 1 f 1 7 7 7 7 7 
-7 7 7 7 1 1 1 7 1 1 1 7 7 7 7 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-. . d 7 7 7 7 7 7 7 7 7 d d . . 
-. . d 7 7 f f f f f 7 7 d d . . 
-. . d 7 7 7 7 7 7 7 7 7 d d . . 
-. . d d 7 7 7 7 7 7 7 . d d . . 
-. . d d . 7 7 7 7 7 . . d d . . 
-. . d . . . . . . . . . d d . . 
-. . . . . . . . . . . . . d . . 
-`;
             case "image1":
             case "Bobby Big-Ear0":return img`
 . . . . . . . . . . . . . . . . 
@@ -277,25 +239,6 @@ e e e e e e e e e e e e e e e .
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `;
-            case "image6":
-            case "lemon":return img`
-. . . . . . . . . . . . . . . . 
-. . . . . f f f f f f f . . . . 
-. . . f f f 5 5 5 5 5 5 f f . . 
-. . f f 5 5 5 5 5 5 5 5 5 5 f . 
-. f f 5 5 5 5 5 5 5 5 5 5 5 f . 
-. f f 5 5 5 5 5 5 5 5 5 5 5 f . 
-. f f 5 5 5 5 5 5 5 5 5 5 5 5 f 
-. f 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-. f 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-. f 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-. f 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-. f 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-. f f 5 5 5 5 5 5 5 5 5 5 5 f f 
-. f f f f 5 5 5 5 5 5 5 5 f . . 
-. . 5 f f f f 5 5 5 5 5 f f . . 
-. . . 5 f f f f f f f f f . . . 
-`;
             case "image10":
             case "Onion":return img`
 . . . . e e . e . . e . . . . . 
@@ -314,6 +257,25 @@ c c d b b d d d b d d d b d c c
 . c c d b b d b d d d b d c c . 
 . . c c d b d b d d b d c c . . 
 . . . c c b d b d b b c c . . . 
+`;
+            case "image5":
+            case "Big_Boss":return img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . 5 . 5 . 5 . . . 
+. . . . . . . . 5 8 5 8 5 . . . 
+. . . . . . . . 5 5 5 5 5 . . . 
+. . . . . c c c c c c c . . . . 
+. . . . c c 7 7 7 7 7 c c c . . 
+. c c c c 7 7 7 7 7 7 7 f c c c 
+c c 7 7 7 7 7 7 7 7 7 7 7 7 7 c 
+c 7 7 c c c 7 c c c 7 c c c c c 
+c 7 c c . c c c . c c c . . . . 
+c c c . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
 `;
         }
         return null;

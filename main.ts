@@ -3,8 +3,7 @@ namespace SpriteKind {
     export const abyss = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile13`, function (sprite, location) {
-    tiles.setCurrentTilemap(tilemap`BossBattle`)
-    current_tilemap = "BossBattle"
+    Change_Tilemap("BossBattle")
     tiles.placeOnTile(Bobbetita, tiles.getTileLocation(18, 1))
     tiles.placeOnTile(Onion, tiles.getTileLocation(17, 2))
     sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
@@ -12,25 +11,42 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile13`, function (sprite, 
     Big_Boss_Move()
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, location) {
-    if (true) {
-        scene.setBackgroundColor(11)
-        current_tilemap = "level3"
-        tiles.placeOnTile(Bobbetita, tiles.getTileLocation(18, 1))
+    if (current_tilemap == "BossBattle") {
+        Change_Tilemap("Final")
         sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
-        sprites.destroyAllSpritesOfKind(SpriteKind.Food)
+        tiles.placeOnTile(Bobbetita, tiles.getTileLocation(2, 1))
+        tiles.placeOnTile(Onion, tiles.getTileLocation(7, 7))
     }
 })
+function Change_Tilemap (text: string) {
+    if (text == "BossBattle") {
+        tiles.setCurrentTilemap(tilemap`BossBattle`)
+        current_tilemap = text
+    } else if (text == "Swamp tile-map") {
+        tiles.setCurrentTilemap(tilemap`Swamp tile-map`)
+        current_tilemap = text
+    } else if (text == "Final") {
+        tiles.setCurrentTilemap(tilemap`Final`)
+        current_tilemap = text
+    }
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     if (current_tilemap == "Swamp tile-map") {
         Score += randint(1, 5)
-        Onion.setPosition(randint(0, 1000), randint(0, 35))
+        otherSprite.setPosition(randint(0, 1000), randint(0, 35))
     } else if (current_tilemap == "BossBattle") {
         Score += randint(1, 5)
-        Onion.destroy()
+        otherSprite.destroy()
         pause(5000)
         Onion = sprites.create(assets.image`Onion`, SpriteKind.Food)
         Onion.setScale(1, ScaleAnchor.Middle)
         tiles.placeOnTile(Onion, tiles.getTileLocation(17, 2))
+    } else if (current_tilemap == "Final") {
+        if (Score < 1) {
+            game.over(false, effects.smiles)
+        } else if (Score > 1) {
+            game.over(true, effects.clouds)
+        }
     }
 })
 function Big_Boss_Move () {
@@ -41,8 +57,8 @@ function Big_Boss_Move () {
     for (let value of gatorMovementLvl_2) {
         pause(100)
         gatorMovementLvl_2.push("run faster")
-        Gator.ax += 3
-        Gator.ay += 3
+        Gator.ax += 6
+        Gator.ay += 6
     }
 }
 function SpawnGator (xSpawn: number, ySpawn: number, Interval: number, level: string) {
@@ -55,7 +71,7 @@ function SpawnGator (xSpawn: number, ySpawn: number, Interval: number, level: st
         Gator.setFlag(SpriteFlag.GhostThroughWalls, true)
     }
     if (level == "2") {
-        Gator = sprites.create(assets.image`Alligators`, SpriteKind.Enemy)
+        Gator = sprites.create(assets.image`Big_Boss`, SpriteKind.Enemy)
         Gator.setScale(4, ScaleAnchor.Middle)
         Gator.setPosition(xSpawn, ySpawn)
         Gator.setFlag(SpriteFlag.GhostThroughWalls, false)
@@ -69,10 +85,11 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     Score += -1
 })
 let gatorMovementLvl_2: string[] = []
+let current_tilemap = ""
 let Gator: Sprite = null
 let Onion: Sprite = null
+let Score = 0
 let Bobbetita: Sprite = null
-let current_tilemap = ""
 game.setDialogTextColor(1)
 game.setDialogFrame(assets.image`Dialog place`)
 game.showLongText("Sing Along!", DialogLayout.Full)
@@ -81,9 +98,8 @@ game.showLongText("You can send them to their doom by shooting arrows from your 
 game.showLongText("Press A for left and B for right: these are the shoot controls.", DialogLayout.Full)
 game.showLongText("But be careful, Bobbetita for your mission is filled, with glitches and with ruthless Crocs who think that you taste good.", DialogLayout.Full)
 game.showLongText("So use your ears and arrows and kill them all for good. ", DialogLayout.Full)
-game.showLongText("And make your way carefully across the rocky road.", DialogLayout.Full)
-tiles.setCurrentTilemap(tilemap`Swamp tile-map`)
-current_tilemap = "Swamp tile-map"
+game.showLongText("And make your way carefully across the crocky road.", DialogLayout.Full)
+Change_Tilemap("Swamp tile-map")
 scene.centerCameraAt(100, 100)
 Bobbetita = sprites.create(assets.image`Bobby Big-Ear0`, SpriteKind.Player)
 scene.cameraFollowSprite(Bobbetita)
@@ -91,7 +107,7 @@ tiles.placeOnTile(Bobbetita, tiles.getTileLocation(7, 7))
 Bobbetita.setScale(2, ScaleAnchor.Middle)
 Bobbetita.sayText("GET OUT OF MY SWAMP.", 2000, true)
 pause(2000)
-let Score = 5
+Score = 5
 let Score_text = textsprite.create(convertToText(Score))
 Score_text.setScale(1.5, ScaleAnchor.Middle)
 let UnderwaterGravity = 0.5
@@ -175,9 +191,14 @@ forever(function () {
     if (current_tilemap == "BossBattle") {
         if (Bobbetita.y < 90) {
             Bobbetita.y += Normal_gravity
-        }
-        if (Bobbetita.y > 91) {
+        } else if ((Bobbetita.y == 90 || Bobbetita.y == 91) && !(controller.up.isPressed())) {
+            Bobbetita.y += Normal_gravity
+            Normal_gravity = 0
+        } else if (Bobbetita.y > 91) {
             Bobbetita.y += UnderwaterGravity
+        } else {
+            Normal_gravity = 1
+            UnderwaterGravity = 0.5
         }
     }
 })
