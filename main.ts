@@ -92,7 +92,6 @@ function PlayerJump (Sprite2: Sprite, Player_: number) {
 function Dialogue () {
     game.setDialogTextColor(1)
     game.setDialogFrame(assets.image`Dialog place`)
-    game.showLongText("Sing Along!", DialogLayout.Full)
     game.showLongText("The Crocs come marching three by three. Not hoorah, not hoorah. They are invading your territory, Bobbetita!", DialogLayout.Full)
     game.showLongText("You can send them to their doom by shooting arrows from your ears.", DialogLayout.Full)
     game.showLongText("Press A for left and B for right: these are the shoot controls.", DialogLayout.Full)
