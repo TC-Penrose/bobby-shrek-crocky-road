@@ -39,6 +39,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile13`, function (sprite, 
     SpawnGator(60, 80, 0, "2")
     Big_Boss_Move()
     Boss_Hits = 0
+    HitCounter = []
 })
 function PlayerJump (Sprite2: Sprite, Player_: number) {
     if (Player_ == 1) {
@@ -209,13 +210,19 @@ function PlayerControls (Sprite2: Sprite, Player_: number) {
     }
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    otherSprite.destroy(effects.disintegrate, 500)
+    if (current_tilemap == "Swamp tile-map") {
+        otherSprite.destroy(effects.disintegrate, 500)
+    }
+    if (current_tilemap == "BossBattle") {
+        otherSprite.destroy(effects.disintegrate, 2000)
+    }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     scene.cameraShake(4, 500)
     Score += -1
 })
 let Final_Text: TextSprite = null
+let HitCounter: number[] = []
 let Boss_Hits = 0
 let current_tilemap = ""
 let Gator: Sprite = null
