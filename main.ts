@@ -75,9 +75,13 @@ let Bobbetita: Sprite = null
 let current_tilemap = ""
 game.setDialogTextColor(1)
 game.setDialogFrame(assets.image`Dialog place`)
-game.showLongText("The Crocs come marching three by three. Not hoorah, not hoorah. They are invading your swamp, Bobbetita!", DialogLayout.Full)
-game.showLongText("You can send them to their doom by shooting arrows from your massive ears. To do this, press A and B.", DialogLayout.Full)
-game.showLongText("But be careful, Bobby. Crocs are ruthless, and they think you taste yummy.", DialogLayout.Full)
+game.showLongText("Sing Along!", DialogLayout.Full)
+game.showLongText("The Crocs come marching three by three. Not hoorah, not hoorah. They are invading your territory, Bobbetita!", DialogLayout.Full)
+game.showLongText("You can send them to their doom by shooting arrows from your ears.", DialogLayout.Full)
+game.showLongText("Press A for left and B for right: these are the shoot controls.", DialogLayout.Full)
+game.showLongText("But be careful, Bobbetita for your mission is filled, with glitches and with ruthless Crocs who think that you taste good.", DialogLayout.Full)
+game.showLongText("So use your ears and arrows and kill them all for good. ", DialogLayout.Full)
+game.showLongText("And make your way carefully across the rocky road.", DialogLayout.Full)
 tiles.setCurrentTilemap(tilemap`Swamp tile-map`)
 current_tilemap = "Swamp tile-map"
 scene.centerCameraAt(100, 100)
