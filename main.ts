@@ -2,6 +2,9 @@ namespace SpriteKind {
     export const Door = SpriteKind.create()
     export const abyss = SpriteKind.create()
 }
+function MultiPlayer () {
+	
+}
 function Gravity (Sprite2: Sprite) {
     if (current_tilemap == "Swamp tile-map") {
         if (Sprite2.y < 75) {
@@ -156,6 +159,12 @@ function Big_Boss_Move () {
     Gator.ax = 3
     Gator.ay = 3
 }
+function Set_Billy () {
+    BILLY = sprites.create(assets.image`BILLY goat-shrek`, SpriteKind.Player)
+    tiles.placeOnTile(BILLY, tiles.getTileLocation(8, 7))
+    BILLY.setScale(1, ScaleAnchor.Middle)
+    BILLY.setStayInScreen(true)
+}
 function SpawnGator (xSpawn: number, ySpawn: number, Interval: number, level: string) {
     if (level == "1") {
         pause(Interval)
@@ -208,6 +217,16 @@ function PlayerControls (Sprite2: Sprite, Player_: number) {
         }
     }
 }
+function Set_Bobbetita () {
+    scene.centerCameraAt(100, 100)
+    Bobbetita = sprites.create(assets.image`Bobby Big-Ear0`, SpriteKind.Player)
+    tiles.placeOnTile(Bobbetita, tiles.getTileLocation(7, 7))
+    Bobbetita.setScale(2, ScaleAnchor.Middle)
+    Bobbetita.sayText("GET OUT OF MY SWAMP.", 2000, true)
+    pause(2000)
+    Bobbetita.setScale(1, ScaleAnchor.Middle)
+    scene.cameraFollowSprite(Bobbetita)
+}
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (current_tilemap == "Swamp tile-map") {
         otherSprite.destroy(effects.disintegrate, 500)
@@ -223,6 +242,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 let Final_Text: TextSprite = null
 let HitCounter: number[] = []
 let Boss_Hits = 0
+let BILLY: Sprite = null
+let Bobbetita: Sprite = null
 let current_tilemap = ""
 let Gator: Sprite = null
 let Arrow: Sprite = null
@@ -230,22 +251,10 @@ let Onion: Sprite = null
 let Normal_gravity = 0
 let UnderwaterGravity = 0
 let Score = 0
-let BILLY: Sprite = null
-let Bobbetita: Sprite = null
 Dialogue()
 Change_Tilemap("Swamp tile-map")
-scene.centerCameraAt(100, 100)
-Bobbetita = sprites.create(assets.image`Bobby Big-Ear0`, SpriteKind.Player)
-tiles.placeOnTile(Bobbetita, tiles.getTileLocation(7, 7))
-Bobbetita.setScale(2, ScaleAnchor.Middle)
-Bobbetita.sayText("GET OUT OF MY SWAMP.", 2000, true)
-pause(2000)
-Bobbetita.setScale(1, ScaleAnchor.Middle)
-scene.cameraFollowSprite(Bobbetita)
-BILLY = sprites.create(assets.image`BILLY goat-shrek`, SpriteKind.Player)
-tiles.placeOnTile(BILLY, tiles.getTileLocation(8, 7))
-BILLY.setScale(1, ScaleAnchor.Middle)
-BILLY.setStayInScreen(true)
+Set_Bobbetita()
+Set_Billy()
 Score = 1
 let Score_text = textsprite.create(convertToText(Score))
 Score_text.setScale(1.5, ScaleAnchor.Middle)
@@ -257,18 +266,13 @@ Onion.setPosition(24, 40)
 Arrow = sprites.create(assets.image`Abyss`, SpriteKind.Projectile)
 Gator = sprites.create(assets.image`Abyss`, SpriteKind.Enemy)
 forever(function () {
-    Score_text.setText(convertToText(Score))
-    Score_text.setPosition(scene.cameraProperty(CameraProperty.Left) + 15, scene.cameraProperty(CameraProperty.Top) + 15)
-})
-forever(function () {
     PlayerControls(Bobbetita, 1)
     PlayerJump(Bobbetita, 1)
     Gravity(Bobbetita)
 })
 forever(function () {
-    PlayerControls(BILLY, 2)
-    PlayerJump(BILLY, 2)
-    Gravity(BILLY)
+    Score_text.setText(convertToText(Score))
+    Score_text.setPosition(scene.cameraProperty(CameraProperty.Left) + 15, scene.cameraProperty(CameraProperty.Top) + 15)
 })
 forever(function () {
     while (current_tilemap == "Swamp tile-map" || current_tilemap == "BossBattle") {
@@ -289,15 +293,9 @@ forever(function () {
     }
 })
 forever(function () {
-    if (current_tilemap == "Swamp tile-map") {
-        SpawnGator(0, randint(80, 300), 1000, "1")
-    }
-})
-forever(function () {
-	
-})
-forever(function () {
-	
+    PlayerControls(BILLY, 2)
+    PlayerJump(BILLY, 2)
+    Gravity(BILLY)
 })
 forever(function () {
     while (current_tilemap == "Final") {
@@ -311,6 +309,11 @@ forever(function () {
     }
 })
 forever(function () {
+    if (current_tilemap == "Swamp tile-map") {
+        SpawnGator(0, randint(80, 300), 1000, "1")
+    }
+})
+forever(function () {
     while (current_tilemap == "Final") {
         music.stopAllSounds()
         music.playMelody("C C C E G G G G ", 200)
@@ -320,6 +323,12 @@ forever(function () {
         music.playMelody("- A A A A G G G ", 200)
         music.playMelody("- - - - - - - - ", 200)
     }
+})
+forever(function () {
+	
+})
+forever(function () {
+	
 })
 forever(function () {
 	
